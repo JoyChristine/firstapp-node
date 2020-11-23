@@ -41,18 +41,37 @@
 
 
 //EVENTS
-const EventEmitter = require('events');
+// const EventEmitter = require('events');
 
-const Logger = require('./logger');
-const logger = new Logger();
+// const Logger = require('./logger');
+// const logger = new Logger();
 
-//.on or .addListener
-logger.on('msg to you', (event) => {
-    console.log('logging', event)
+// //.on or .addListener
+// logger.on('msg to you', (event) => {
+//     console.log('logging', event)
+// });
+// logger.log('msg');
+// //raise logging (data: msg)
+
+
+//HTTP
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    if (req.url === './') {
+        res.write('Hey');
+        res.end();
+    }
 });
-logger.log('msg');
 
+if (req.url === '/api/courses') {
+    res.write(JSON.stringify([1, 2, 3]));
+    res.end();
+}
+// server.on('connection', (socket) => {
+//     console.log('new connection ...')
+// })
 
+server.listen(3000);
 
-
-//raise logging (data: msg)
+console.log('listen on port 3000...');
