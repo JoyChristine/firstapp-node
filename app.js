@@ -38,3 +38,21 @@
 //     if (err) console.log('ERROR', err);
 //     else console.log('Result', files);
 // });
+
+
+//EVENTS
+const EventEmitter = require('events');
+
+const Logger = require('./logger');
+const logger = new Logger();
+
+//.on or .addListener
+logger.on('msg to you', (event) => {
+    console.log('logging', event)
+});
+logger.log('msg');
+
+
+
+
+//raise logging (data: msg)
